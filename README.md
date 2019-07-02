@@ -1,68 +1,21 @@
-*Psst  looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
----
+# svelte app issue
 
-# svelte app
+Based on https://github.com/sveltejs/template.
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+See version with issue here https://igtemplate.blob.core.windows.net/public/packages/svelte/public/index.html in Azure storage blob. Same code works in Svelte REPL
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+Just add this to App.svelte in Svelte REPL:
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
+<script>
+	import Loadable from 'svelte-loadable'
+</script>
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
-
-## Get started
-
-Install the dependencies...
-
-```bash
-cd svelte-app
-npm install
-```
-
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-now
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public
-```
+<h1>What now?</h1>
+<Loadable  loader={() => import('https://igtemplate.blob.core.windows.net/public/packages/svelte/ScreenCDN.svelte')}>
+  <div slot="loading">Loading...</div>
+  <div slot="error" let:error>
+    {error}
+  </div>
+</Loadable>
+<mystuff/>	
